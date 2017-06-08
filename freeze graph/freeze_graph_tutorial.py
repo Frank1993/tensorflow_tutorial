@@ -39,11 +39,13 @@ with tf.Session() as sess:
 		x_batch = inputs[batch_indexes]
 		y_labels = labels[batch_indexes]
 
-		loss,summary = sess.run([optimize,merged_summary],feed_dict = {X:x_batch, y : y_labels})
+		loss,summary,W_val = sess.run([optimize,merged_summary,W],feed_dict = {X:x_batch, y : y_labels})
 
-		train_writer.add_summary(summary)
+		train_writer.add_summary(summary, global_step = step)
 
 		saver.save(sess, "./checks/LinearLineFit",global_step = step)
+
+	print(W_val)
 
 train_writer.close()
 
