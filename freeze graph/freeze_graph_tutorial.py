@@ -31,7 +31,7 @@ with tf.Session() as sess:
 
 	inputs = np.linspace(0,2,num = 2000)
 
-	labels = inputs + np.random.randn(2000)
+	labels = 3 * inputs + np.random.randn(2000)
 
 
 	for step in range(1000):
